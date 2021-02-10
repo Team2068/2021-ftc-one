@@ -53,17 +53,8 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 public class HardwareDefines
 {
     /* Public OpMode members. */
-    public DcMotor  backLeftDrive   = null;
-    public DcMotor  frontLeftDrive   = null;
-    public DcMotor  backRightDrive   = null;
-    public DcMotor  frontRightDrive  = null;
-    public DcMotor  leftArm     = null;
-    public Servo    leftClaw    = null;
-    public Servo    rightClaw   = null;
-
-    public static final double MID_SERVO       =  0.5 ;
-    public static final double ARM_UP_POWER    =  0.45 ;
-    public static final double ARM_DOWN_POWER  = -0.45 ;
+    public DcMotor  leftDrive   = null;
+    public DcMotor  rightDrive   = null;
 
     /* local OpMode members. */
     HardwareMap hwMap           =  null;
@@ -80,35 +71,18 @@ public class HardwareDefines
         hwMap = ahwMap;
 
         // Define and Initialize Motors
-        backLeftDrive = hwMap.get(DcMotor.class, "back_left_drive");
-        frontLeftDrive = hwMap.get(DcMotor.class, "front_left_drive");
-        backRightDrive = hwMap.get(DcMotor.class, "back_right_drive");
-        frontRightDrive = hwMap.get(DcMotor.class, "front_right_drive");
-        //leftArm    = hwMap.get(DcMotor.class, "left_arm");
+        leftDrive = hwMap.get(DcMotor.class, "left_drive");
+        rightDrive = hwMap.get(DcMotor.class, "right_drive");
 
         // Set all motors to zero power
-        backLeftDrive.setPower(0);
-        frontLeftDrive.setPower(0);
-        backRightDrive.setPower(0);
-        frontRightDrive.setPower(0);
-        //leftArm.setPower(0);
+        leftDrive.setPower(0);
+        rightDrive.setPower(0);
 
         // Set all motors to run without encoders.
         // May want to use RUN_USING_ENCODERS if encoders are installed.
-        backLeftDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        frontLeftDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        backRightDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        frontRightDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        //leftArm.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        leftDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-        // Define and initialize ALL installed servos.
-        // which we dont have at the moment lmfao
-        /*
-        leftClaw  = hwMap.get(Servo.class, "left_hand");
-        rightClaw = hwMap.get(Servo.class, "right_hand");
-        leftClaw.setPosition(MID_SERVO);
-        rightClaw.setPosition(MID_SERVO);
-        */
     }
  }
 
